@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_blog/colors.dart';
+import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/fake_data.dart';
-import 'package:tech_blog/strings.dart';
 import 'package:tech_blog/ui/home_screen.dart';
 import 'package:tech_blog/ui/profile_screen.dart';
 
@@ -14,6 +12,8 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
+final GlobalKey<ScaffoldState> _key = GlobalKey();
+
 class _MainScreenState extends State<MainScreen> {
   var selectedIndex = 0;
 
@@ -22,20 +22,80 @@ class _MainScreenState extends State<MainScreen> {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double bodyMargin = size.width / 10;
-    List<Widget> mainScreens = [
-      HomeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-      ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-    ];
-
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        drawer: Drawer(
+          backgroundColor: SolidColors.scaffoldBg,
+          child: Padding(
+            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  child: Center(
+                    child: Image.asset(
+                      Assets.images.techblog.path,
+                      scale: 3,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "پروفایل کاربری",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.divider,
+                ),
+                ListTile(
+                  title: Text(
+                    "درباره تک‌بلاگ",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.divider,
+                ),
+                ListTile(
+                  title: Text(
+                    "اشتراک گذاری تک بلاگ",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () async {},
+                ),
+                const Divider(
+                  color: SolidColors.divider,
+                ),
+                ListTile(
+                  title: Text(
+                    "تک‌بلاگ در گیت هاب",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.divider,
+                ),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Icon(
-                Icons.menu,
-                color: Colors.black,
+              InkWell(
+                onTap: () {
+                  _key.currentState?.openDrawer();
+                },
+                child: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
               ),
               Assets.images.techblog.image(height: size.height / 13.6),
               const Icon(
@@ -49,24 +109,32 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: Stack(
           children: [
-            Center(
-              child: Positioned.fill(
-                child: mainScreens[selectedIndex]
+            Positioned.fill(
+              child: IndexedStack(
+                index: selectedIndex,
+                children: [
+                  HomeScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  ProfileScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                ],
               ),
             ),
-            BottomNavigation(changeScreen: (screen) {
-              setState(() {
-                selectedIndex = screen;
-              });
-            },size: size, bodyMargin: bodyMargin),
+            BottomNavigation(
+              changeScreen: (screen) {
+                setState(() {
+                  selectedIndex = screen;
+                });
+              },
+              size: size,
+              bodyMargin: bodyMargin,
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({
@@ -99,6 +167,7 @@ class BottomNavigation extends StatelessWidget {
         ),
         child: Container(
           height: size.height / 8,
+          margin: EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
               gradient: const LinearGradient(colors: GradiantColors.bottomNav)),

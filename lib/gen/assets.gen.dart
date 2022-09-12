@@ -8,9 +8,15 @@
 // ignore_for_file: directives_ordering,unnecessary_import
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/down_cats_arrow.png
+  AssetGenImage get downCatsArrow =>
+      const AssetGenImage('assets/icons/down_cats_arrow.png');
 
   /// File path: assets/icons/pen.png
   AssetGenImage get pen => const AssetGenImage('assets/icons/pen.png');
@@ -38,7 +44,7 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/single_place_holder.jpg');
 
   /// File path: assets/images/tcbot.svg
-  String get tcbot => 'assets/images/tcbot.svg';
+  SvgGenImage get tcbot => const SvgGenImage('assets/images/tcbot.svg');
 
   /// File path: assets/images/techblog.png
   AssetGenImage get techblog =>
@@ -113,4 +119,53 @@ class AssetGenImage {
   String get path => _assetName;
 
   String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
+    );
+  }
+
+  String get path => _assetName;
 }

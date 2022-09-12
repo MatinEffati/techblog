@@ -14,6 +14,7 @@ class Strings {
   static const String chooseCats = "دسته بندی هایی که دوست داری رو انتخاب کن";
 
   static const String welcome = """به تک‌بلاگ خوش اومدی
+  
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی """;
 

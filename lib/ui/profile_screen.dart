@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tech_blog/colors.dart';
-import 'package:tech_blog/components.dart';
+import 'package:tech_blog/components/colors.dart';
+import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/strings.dart';
+import 'package:tech_blog/components/strings.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -20,52 +20,55 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image(
-            image: Image.asset(Assets.images.profileAvatar.path).image,
-            height: 100,
-          ),
-          const SizedBox(height: 32,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ImageIcon(Image.asset(Assets.icons.pen.path).image,color: SolidColors.seeMore,),
-              const SizedBox(width: 8,),
-              Text(Strings.imageProfileEdit,style: textTheme.headline3,)
-            ],
-          ),
-          const SizedBox(height: 64,),
-          Text('متین عفتی',style: textTheme.headline4,),
-          Text('Telecleverguy@gmail.com',style: textTheme.headline4,),
-          const SizedBox(height: 40,),
-          TechDivider(size: size),
-          InkWell(
-            splashColor: SolidColors.primaryColor,
-            onTap: () {
+      child: Padding(
+        padding: const EdgeInsets.only(top:32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(
+              image: Image.asset(Assets.images.profileAvatar.path).image,
+              height: 100,
+            ),
+            const SizedBox(height: 32,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ImageIcon(Image.asset(Assets.icons.pen.path).image,color: SolidColors.seeMore,),
+                const SizedBox(width: 8,),
+                Text(Strings.imageProfileEdit,style: textTheme.headline3,)
+              ],
+            ),
+            const SizedBox(height: 64,),
+            Text('متین عفتی',style: textTheme.headline4,),
+            Text('Telecleverguy@gmail.com',style: textTheme.headline4,),
+            const SizedBox(height: 40,),
+            TechDivider(size: size),
+            InkWell(
+              splashColor: SolidColors.primaryColor,
+              onTap: () {
 
-            },
-            child: SizedBox(height: 45,child: Center(child: Text(Strings.myFavBlog,style: textTheme.headline4,))),
-          ),
-          TechDivider(size: size),
-          InkWell(
-            splashColor: SolidColors.primaryColor,
-            onTap: () {
+              },
+              child: SizedBox(height: 45,child: Center(child: Text(Strings.myFavBlog,style: textTheme.headline4,))),
+            ),
+            TechDivider(size: size),
+            InkWell(
+              splashColor: SolidColors.primaryColor,
+              onTap: () {
 
-            },
-            child: SizedBox(height: 45,child: Center(child: Text(Strings.myFavPodcast,style: textTheme.headline4,))),
-          ),
-          TechDivider(size: size),
-          InkWell(
-            splashColor: SolidColors.primaryColor,
-            onTap: () {
+              },
+              child: SizedBox(height: 45,child: Center(child: Text(Strings.myFavPodcast,style: textTheme.headline4,))),
+            ),
+            TechDivider(size: size),
+            InkWell(
+              splashColor: SolidColors.primaryColor,
+              onTap: () {
 
-            },
-            child: SizedBox(height: 45,child: Center(child: Text(Strings.logOut,style: textTheme.headline4,))),
-          ),
-          const SizedBox(height: 60,),
-        ],
+              },
+              child: SizedBox(height: 45,child: Center(child: Text(Strings.logOut,style: textTheme.headline4,))),
+            ),
+            const SizedBox(height: 60,),
+          ],
+        ),
       ),
     );
   }

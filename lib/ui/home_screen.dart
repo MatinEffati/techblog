@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tech_blog/colors.dart';
+import 'package:tech_blog/components/colors.dart';
+import 'package:tech_blog/components/components.dart';
+import 'package:tech_blog/components/strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
-import 'package:tech_blog/strings.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -290,33 +291,9 @@ class TagList extends StatelessWidget {
                 8,
                 index == 0 ? bodyMargin : 15,
                 8),
-            child: Container(
-              height: 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: const LinearGradient(
-                      colors: GradiantColors.tags,
-                      begin: Alignment.centerRight,
-                      end: Alignment.centerLeft)),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.tag,
-                      color: Colors.white,
-                      size: 16,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      tagList[index].title,
-                      style: textTheme.headline2,
-                    ),
-                  ],
-                ),
-              ),
+            child: TagItem(
+              textTheme: textTheme,
+              index: index,
             ),
           );
         },

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tech_blog/colors.dart';
-import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/ui/splash_screen.dart';
+import 'package:tech_blog/components/colors.dart';
+import 'package:tech_blog/ui/main_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,6 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return MaterialApp(
         title: 'Flutter Demo',
         localizationsDelegates: const [
@@ -37,11 +37,10 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Dana',
           textTheme: const TextTheme(
             headline1: TextStyle(
-              fontFamily: 'Dana',
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: SolidColors.posterTitle
-            ),
+                fontFamily: 'Dana',
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: SolidColors.posterTitle),
             headline2: TextStyle(
               fontFamily: 'Dana',
               fontSize: 14,
@@ -57,8 +56,14 @@ class MyApp extends StatelessWidget {
             headline4: TextStyle(
               fontFamily: 'Dana',
               fontSize: 14,
+              color: Colors.black,
               fontWeight: FontWeight.w700,
             ),
+            headline5: TextStyle(
+                fontFamily: 'Dana',
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: SolidColors.hintText),
             bodyText1: TextStyle(
               fontFamily: 'Dana',
               fontSize: 13,
@@ -68,10 +73,37 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Dana',
                 fontSize: 14,
                 fontWeight: FontWeight.w300,
-                color: SolidColors.posterSubTitle
+                color: SolidColors.posterSubTitle),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              textStyle: MaterialStateProperty.resolveWith(
+                (states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return textTheme.headline1;
+                  }
+                  return textTheme.subtitle1;
+                },
+              ),
+              backgroundColor: MaterialStateProperty.resolveWith(
+                (states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return SolidColors.primaryColor;
+                  }
+                  return SolidColors.primaryColor;
+                },
+              ),
             ),
           ),
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(width: 2)
+            ),
+            filled: true,
+            fillColor: Colors.white
+          ),
         ),
-        home: const SplashScreen());
+        home: const MainScreen());
   }
 }
