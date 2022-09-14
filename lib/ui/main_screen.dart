@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/components/colors.dart';
+import 'package:tech_blog/components/components.dart';
+import 'package:tech_blog/components/strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/ui/home_screen.dart';
 import 'package:tech_blog/ui/profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedIndex = 0;
+class MainScreen extends StatelessWidget {
+  MainScreen({super.key});
+
+  RxInt selectedIndex = 0.obs;
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,17 +64,21 @@ class _MainScreenState extends State<MainScreen> {
                     "اشتراک گذاری تک بلاگ",
                     style: textTheme.headline4,
                   ),
-                  onTap: () async {},
+                  onTap: () async{
+                    await Share.share(Strings.shareText);
+                  },
                 ),
                 const Divider(
                   color: SolidColors.divider,
                 ),
                 ListTile(
                   title: Text(
-                    "تک‌بلاگ در گیت هاب",
+                    "تک بلاگ در گیت هاب",
                     style: textTheme.headline4,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    myLaunchUrl(Strings.techBlogGithubUrl);
+                  },
                 ),
                 const Divider(
                   color: SolidColors.divider,
@@ -110,21 +114,21 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-              child: IndexedStack(
-                index: selectedIndex,
-                children: [
-                  HomeScreen(
-                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                  ProfileScreen(
-                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                ],
-              ),
+              child: Obx(() {
+                return IndexedStack(
+                  index: selectedIndex.value,
+                  children: [
+                    HomeScreen(
+                        size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                    ProfileScreen(
+                        size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  ],
+                );
+              },)
             ),
             BottomNavigation(
               changeScreen: (screen) {
-                setState(() {
-                  selectedIndex = screen;
-                });
+                  selectedIndex.value = screen;
               },
               size: size,
               bodyMargin: bodyMargin,

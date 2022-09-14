@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       (value) {
         Navigator.of(context).pushReplacement(
           CupertinoPageRoute(
-            builder: (context) => const MainScreen(),
+            builder: (context) => MainScreen(),
           ),
         );
       },

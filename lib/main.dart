@@ -104,6 +104,6 @@ class MyApp extends StatelessWidget {
             fillColor: Colors.white
           ),
         ),
-        home: const MainScreen());
+        home: MainScreen());
   }
 }

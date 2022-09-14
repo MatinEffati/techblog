@@ -1,5 +1,5 @@
 class Strings {
-  static const String techBlogGithubUrl = "https://github.com/sasansafari/techblog";
+  static const String techBlogGithubUrl = "https://github.com/matineffati/techblog";
   static const String viewHottestBlog = "مشاهده داغ ترین نوشته ها ";
   static const String viewHottestPodCasts = "مشاهده داغ ترین پادکست ها";
   static const String relatedArticle = "نوشته های مرتبط";
@@ -19,8 +19,8 @@ class Strings {
 ثبت نام کنی """;
 
   static const String shareText = """
-من از تکبلاگ استفاده میکنم ، خیلی باحاله ، تو هم داشته باش\n
-www.sasansafari.com
+من از تک بلاگ استفاده میکنم ، خیلی باحاله ، تو هم داشته باش\n
+www.MatinEffati.ir
 """;
 
   static const String successfulRegistration = """
