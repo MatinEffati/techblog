@@ -221,9 +221,7 @@ class HomeScreen extends StatelessWidget {
                                       )),
                                   placeholder: (context, url) =>
                                   const Center(
-                                    child: CupertinoActivityIndicator(
-                                      color: SolidColors.primaryColor,
-                                    ),
+                                    child: Loading(),
                                   ),
                                   errorWidget: (context, url, error) =>
                                   const Icon(
@@ -321,9 +319,7 @@ class HomeScreen extends StatelessWidget {
                                 )),
                             placeholder: (context, url) =>
                             const Center(
-                              child: CupertinoActivityIndicator(
-                                color: SolidColors.primaryColor,
-                              ),
+                              child: Loading(),
                             ),
                             errorWidget: (context, url, error) =>
                             const Icon(
