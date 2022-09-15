@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:tech_blog/components/colors.dart';
+import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/ui/main_screen.dart';
 
@@ -39,10 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(
                 height: 32,
               ),
-              const SpinKitWave(
-                color: SolidColors.primaryColor,
-                size: 32,
-              ),
+              const Loading(),
             ],
           ),
         ),
@@ -50,3 +46,5 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+

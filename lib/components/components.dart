@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/models/fake_data.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -62,6 +63,20 @@ class TagItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Loading extends StatelessWidget {
+  const Loading({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SpinKitWave(
+      color: SolidColors.primaryColor,
+      size: 32,
     );
   }
 }
