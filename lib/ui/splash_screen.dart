@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/ui/main_screen.dart';
+import 'package:tech_blog/ui/main_screens/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

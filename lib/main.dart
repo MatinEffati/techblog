@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tech_blog/components/colors.dart';
-import 'package:tech_blog/ui/main_screen.dart';
+import 'package:tech_blog/ui/article_list_screen.dart';
+import 'package:tech_blog/ui/main_screens/main_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -104,6 +105,6 @@ class MyApp extends StatelessWidget {
             fillColor: Colors.white
           ),
         ),
-        home: MainScreen());
+        home: ArticleListScreen());
   }
 }

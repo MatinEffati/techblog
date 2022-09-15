@@ -6,8 +6,8 @@ import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/components/strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/ui/home_screen.dart';
-import 'package:tech_blog/ui/profile_screen.dart';
+import 'package:tech_blog/ui/main_screens/home_screen.dart';
+import 'package:tech_blog/ui/main_screens/profile_screen.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
