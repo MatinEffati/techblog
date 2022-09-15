@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               ),
 
               /// Tag List
-              TagList(bodyMargin: bodyMargin, textTheme: textTheme),
+              tags(),
               const SizedBox(
                 height: 32,
               ),
@@ -144,6 +144,30 @@ class HomeScreen extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  Widget tags(){
+    return SizedBox(
+      height: 60,
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: homeScreenController.tagsList.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.fromLTRB(
+                index == tagList.length ? bodyMargin : 0,
+                8,
+                index == 0 ? bodyMargin : 15,
+                8),
+            child: TagItem(
+              textTheme: textTheme,
+              index: index,
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -361,42 +385,6 @@ class ListHeadTitle extends StatelessWidget {
           ),
           Text(title, style: textTheme.headline3),
         ],
-      ),
-    );
-  }
-}
-
-class TagList extends StatelessWidget {
-  const TagList({
-    Key? key,
-    required this.bodyMargin,
-    required this.textTheme,
-  }) : super(key: key);
-
-  final double bodyMargin;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: tagList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.fromLTRB(
-                index == tagList.length - 1 ? bodyMargin : 0,
-                8,
-                index == 0 ? bodyMargin : 15,
-                8),
-            child: TagItem(
-              textTheme: textTheme,
-              index: index,
-            ),
-          );
-        },
       ),
     );
   }
