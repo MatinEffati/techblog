@@ -14,6 +14,7 @@ class ArticleItemController extends GetxController {
 
 
   getArticleItem() async {
+    articleInfo = ArticleInfoModel().obs;
     loading.value = true;
     var userId = '';
     var response = await DioService().getMethod(
