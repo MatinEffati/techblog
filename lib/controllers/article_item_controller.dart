@@ -3,7 +3,7 @@ import 'package:tech_blog/components/api_constants.dart';
 import 'package:tech_blog/models/article_info_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
 
-class SingleArticleController extends GetxController {
+class ArticleItemController extends GetxController {
   RxBool loading = false.obs;
   RxInt id = RxInt(0);
   Rx<ArticleInfoModel> articleInfo = ArticleInfoModel().obs;

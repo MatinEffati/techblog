@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/ui/article_list_screen.dart';
 import 'package:tech_blog/ui/main_screens/main_screen.dart';
-import 'package:tech_blog/ui/single.dart';
+import 'package:tech_blog/ui/article_item_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(

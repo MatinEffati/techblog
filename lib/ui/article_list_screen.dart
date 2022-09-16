@@ -2,16 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/components.dart';
-import 'package:tech_blog/controllers/article_controller.dart';
-import 'package:tech_blog/controllers/single_article_controller.dart';
-import 'package:tech_blog/ui/single.dart';
+import 'package:tech_blog/controllers/article_list_controller.dart';
+import 'package:tech_blog/controllers/article_item_controller.dart';
+import 'package:tech_blog/ui/article_item_screen.dart';
 
 class ArticleListScreen extends StatelessWidget {
   ArticleListScreen({Key? key}) : super(key: key);
 
   ArticleListController articleController = Get.put(ArticleListController());
-  SingleArticleController singleArticleController =
-      Get.put(SingleArticleController());
+  ArticleItemController singleArticleController =
+      Get.put(ArticleItemController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ArticleListScreen extends StatelessWidget {
                       onTap: () {
                         singleArticleController.id.value = int.parse(
                             articleController.articleList[index].id.toString());
-                        Get.to(Single());
+                        Get.to(ArticleItemScreen());
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

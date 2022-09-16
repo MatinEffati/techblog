@@ -4,24 +4,24 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/components/components.dart';
-import 'package:tech_blog/controllers/single_article_controller.dart';
+import 'package:tech_blog/controllers/article_item_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 
-class Single extends StatefulWidget {
-  Single({Key? key}) : super(key: key);
+class ArticleItemScreen extends StatefulWidget {
+  ArticleItemScreen({Key? key}) : super(key: key);
 
   @override
-  State<Single> createState() => _SingleState();
+  State<ArticleItemScreen> createState() => _ArticleItemScreenState();
 }
 
-class _SingleState extends State<Single> {
-  SingleArticleController singleArticleController = Get.put(SingleArticleController());
+class _ArticleItemScreenState extends State<ArticleItemScreen> {
+  ArticleItemController articleItemController = Get.put(ArticleItemController());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    singleArticleController.getArticleItem();
+    articleItemController.getArticleItem();
   }
 
   @override
@@ -36,7 +36,7 @@ class _SingleState extends State<Single> {
               Stack(
                 children: [
                   CachedNetworkImage(
-                    imageUrl: singleArticleController.articleInfo.value.image!,
+                    imageUrl: articleItemController.articleInfo.value.image!,
                     imageBuilder: (context, imageProvider) {
                       return Image(image: imageProvider);
                     },
@@ -97,7 +97,7 @@ class _SingleState extends State<Single> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  singleArticleController.articleInfo.value.title!,
+                  articleItemController.articleInfo.value.title!,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: textTheme.titleLarge,
@@ -116,21 +116,21 @@ class _SingleState extends State<Single> {
                       width: 16,
                     ),
                     Text(
-                      singleArticleController.articleInfo.value.author!,
+                      articleItemController.articleInfo.value.author!,
                       style: textTheme.headline4,
                     ),
                     const SizedBox(
                       width: 16,
                     ),
                     Text(
-                      singleArticleController.articleInfo.value.createdAt!,
+                      articleItemController.articleInfo.value.createdAt!,
                       style: textTheme.caption,
                     ),
                   ],
                 ),
               ),
               HtmlWidget(
-                singleArticleController.articleInfo.value.content!,
+                articleItemController.articleInfo.value.content!,
                 textStyle: textTheme.bodyText1,
                 enableCaching: true,
                 onLoadingBuilder: (context, element, loadingProgress) =>
