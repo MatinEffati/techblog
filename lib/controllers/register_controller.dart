@@ -42,8 +42,8 @@ class RegisterController extends GetxController {
       box.write(token, response.data['token']);
       box.write(userIdKey, response.data['user_id']);
 
-      print('read -> ${box.read(token)}');
-      print('read -> ${box.read(userIdKey)}');
+      debugPrint('read -> ${box.read(token)}');
+      debugPrint('read -> ${box.read(userIdKey)}');
       Get.to(MainScreen());
     }else{
       log('error');

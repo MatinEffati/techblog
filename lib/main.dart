@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tech_blog/components/colors.dart';
-import 'package:tech_blog/ui/article_list_screen.dart';
-import 'package:tech_blog/ui/main_screens/main_screen.dart';
-import 'package:tech_blog/ui/article_item_screen.dart';
+import 'package:tech_blog/ui/splash_screen.dart';
 
-void main() {
+void main() async{
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: SolidColors.statusBar,
@@ -16,6 +15,7 @@ void main() {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -107,7 +107,7 @@ class MyApp extends StatelessWidget {
           fillColor: Colors.white,
         ),
       ),
-      home: ArticleListScreen(),
+      home: const SplashScreen(),
     );
   }
 }
