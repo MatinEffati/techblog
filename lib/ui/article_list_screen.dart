@@ -2,15 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/components.dart';
-import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/controllers/article_item_controller.dart';
-import 'package:tech_blog/ui/article_item_screen.dart';
+import 'package:tech_blog/controllers/article_list_controller.dart';
 
 class ArticleListScreen extends StatelessWidget {
-  ArticleListScreen({Key? key}) : super(key: key);
+  ArticleListScreen({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   ArticleListController articleController = Get.put(ArticleListController());
-  ArticleItemController singleArticleController =
+  ArticleItemController articleItemController =
       Get.put(ArticleItemController());
 
   @override
@@ -18,7 +19,7 @@ class ArticleListScreen extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Scaffold(
-          appBar: appBar('مقالات جدید'),
+          appBar: appBar(title),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
@@ -30,9 +31,8 @@ class ArticleListScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        singleArticleController.id.value = int.parse(
-                            articleController.articleList[index].id.toString());
-                        Get.to(ArticleItemScreen());
+                        articleItemController.getArticleItem(
+                            articleController.articleList[index].id);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

@@ -5,25 +5,13 @@ import 'package:get/get.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/controllers/article_item_controller.dart';
+import 'package:tech_blog/controllers/article_list_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/ui/article_list_screen.dart';
 
-class ArticleItemScreen extends StatefulWidget {
-  ArticleItemScreen({Key? key}) : super(key: key);
-
-  @override
-  State<ArticleItemScreen> createState() => _ArticleItemScreenState();
-}
-
-class _ArticleItemScreenState extends State<ArticleItemScreen> {
+class ArticleItemScreen extends StatelessWidget {
   ArticleItemController articleItemController =
       Get.put(ArticleItemController());
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    articleItemController.getArticleItem();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +164,12 @@ class _ArticleItemScreenState extends State<ArticleItemScreen> {
         itemCount: articleItemController.tagList.length,
         itemBuilder: ((context, index) {
           return GestureDetector(
-            onTap: () async {},
+            onTap: () async {
+              var tagId = articleItemController.tagList[index].id!;
+              await Get.find<ArticleListController>().getArticleListWithTagId(tagId);
+              String tagName = articleItemController.tagList[index].title!;
+              Get.to(ArticleListScreen(title: tagName));
+            },
             child: Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Container(
@@ -209,7 +202,9 @@ class _ArticleItemScreenState extends State<ArticleItemScreen> {
         itemBuilder: ((context, index) {
           //blog item
           return GestureDetector(
-            onTap: (() {}),
+            onTap: (() {
+              articleItemController.getArticleItem(articleItemController.relatedList[index].id);
+            }),
             child: Padding(
               padding: EdgeInsets.only(right: index == 0 ? Get.width / 15 : 15),
               child: Column(

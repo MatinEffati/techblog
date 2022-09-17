@@ -8,6 +8,7 @@ import 'package:tech_blog/components/strings.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/ui/main_screens/home_screen.dart';
 import 'package:tech_blog/ui/main_screens/profile_screen.dart';
+import 'package:tech_blog/ui/register/register_intro_screen.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -183,7 +184,10 @@ class BottomNavigation extends StatelessWidget {
                   icon: const Icon(CupertinoIcons.house_fill,
                       color: Colors.white)),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  //Todo check login status
+                  Get.to(RegisterIntroScreen());
+                },
                 icon: ImageIcon(Image.asset(Assets.icons.write.path).image),
                 color: Colors.white,
               ),

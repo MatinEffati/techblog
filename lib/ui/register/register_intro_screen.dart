@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/components/strings.dart';
+import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/ui/categories_screen.dart';
 import 'package:validators/validators.dart';
 
 class RegisterIntroScreen extends StatelessWidget {
-  const RegisterIntroScreen({Key? key}) : super(key: key);
+  RegisterIntroScreen({Key? key}) : super(key: key);
+
+  RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +77,7 @@ class RegisterIntroScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(24),
                     child: TextField(
+                      controller: registerController.emailTextEditingController,
                       onChanged: (value) {
                         print(isEmail(value));
                       },
@@ -85,6 +90,7 @@ class RegisterIntroScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      registerController.register();
                       Navigator.pop(context);
                       _showActivateCodeBottomSheet(context, size, textTheme);
                     },
@@ -128,6 +134,7 @@ class RegisterIntroScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(24),
                     child: TextField(
+                      controller: registerController.activateCodeTextEditingController,
                       onChanged: (value) {
 
                       },
@@ -140,7 +147,8 @@ class RegisterIntroScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => const CategoriesScreen(),));
+                      registerController.verify();
+                      // Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => const CategoriesScreen(),));
                     },
                     child: const Text('ادامه'),
                   ),

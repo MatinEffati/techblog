@@ -4,6 +4,7 @@ import 'package:tech_blog/models/article_info_model.dart';
 import 'package:tech_blog/models/article_model.dart';
 import 'package:tech_blog/models/tag_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
+import 'package:tech_blog/ui/article_item_screen.dart';
 
 class ArticleItemController extends GetxController {
   RxBool loading = false.obs;
@@ -13,7 +14,7 @@ class ArticleItemController extends GetxController {
   RxList<ArticleModel> relatedList = RxList();
 
 
-  getArticleItem() async {
+  getArticleItem(var id) async {
     articleInfo = ArticleInfoModel().obs;
     loading.value = true;
     var userId = '';
@@ -35,5 +36,7 @@ class ArticleItemController extends GetxController {
 
       loading.value = false;
     }
+    Get.to(ArticleItemScreen());
   }
+
 }
