@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/components/components.dart';
+import 'package:tech_blog/components/routes.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/ui/main_screens/main_screen.dart';
+import 'package:tech_blog/main.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,11 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 1)).then(
       (value) {
-        Navigator.of(context).pushReplacement(
-          CupertinoPageRoute(
-            builder: (context) => MainScreen(),
-          ),
-        );
+        Get.offAndToNamed(Routes.routeMainScreen);
       },
     );
     super.initState();

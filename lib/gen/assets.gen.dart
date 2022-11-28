@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,10 +26,17 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/write.png
   AssetGenImage get write => const AssetGenImage('assets/icons/write.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [downCatsArrow, pen, podcast, write];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/empty_state.png
+  AssetGenImage get emptyState =>
+      const AssetGenImage('assets/images/empty_state.png');
 
   /// File path: assets/images/poster_test.png
   AssetGenImage get posterTest =>
@@ -49,6 +56,16 @@ class $AssetsImagesGen {
   /// File path: assets/images/techblog.png
   AssetGenImage get techblog =>
       const AssetGenImage('assets/images/techblog.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+        emptyState,
+        posterTest,
+        profileAvatar,
+        singlePlaceHolder,
+        tcbot,
+        techblog
+      ];
 }
 
 class Assets {
@@ -115,6 +132,8 @@ class AssetGenImage {
       cacheHeight: cacheHeight,
     );
   }
+
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dio_service;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -19,7 +17,11 @@ class DioService {
       (response) {
         return response;
       },
-    );
+    ).catchError((e){
+      if(e is DioError){
+        return e.response!;
+      }
+    });
   }
 
   Future<dynamic> postMethod(Map<String, dynamic> map, String url) async {
@@ -35,6 +37,10 @@ class DioService {
       (response) {
         return response;
       },
-    );
+    ).catchError((e){
+      if(e is DioError){
+        return e.response!;
+      }
+    });
   }
 }

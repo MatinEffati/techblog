@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/components/strings.dart';
-import 'package:tech_blog/controllers/article_item_controller.dart';
+import 'package:tech_blog/controllers/article/article_item_controller.dart';
 import 'package:tech_blog/controllers/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/fake_data.dart';
-import 'package:tech_blog/ui/article_list_screen.dart';
+import 'package:tech_blog/ui/article/article_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({

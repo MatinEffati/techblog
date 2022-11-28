@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:tech_blog/components/api_constants.dart';
+import 'package:tech_blog/components/routes.dart';
+import 'package:tech_blog/main.dart';
 import 'package:tech_blog/models/article_info_model.dart';
 import 'package:tech_blog/models/article_model.dart';
 import 'package:tech_blog/models/tag_model.dart';
 import 'package:tech_blog/services/dio_service.dart';
-import 'package:tech_blog/ui/article_item_screen.dart';
 
 class ArticleItemController extends GetxController {
   RxBool loading = false.obs;
@@ -12,7 +13,6 @@ class ArticleItemController extends GetxController {
   Rx<ArticleInfoModel> articleInfo = ArticleInfoModel().obs;
   RxList<TagModel> tagList = RxList();
   RxList<ArticleModel> relatedList = RxList();
-
 
   getArticleItem(var id) async {
     articleInfo = ArticleInfoModel().obs;
@@ -36,7 +36,6 @@ class ArticleItemController extends GetxController {
 
       loading.value = false;
     }
-    Get.to(ArticleItemScreen());
+    Get.toNamed(Routes.routeArticleItem);
   }
-
 }

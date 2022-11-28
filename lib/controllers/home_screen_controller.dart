@@ -29,9 +29,9 @@ class HomeScreenController extends GetxController {
         topVisitedList.add(ArticleModel.fromJson(element));
       });
 
-      response.data['top_podcasts'].forEach((element) async{
-        topPodcastList.add(PodcastModel.fromJson(element));
-      });
+      // response.data['top_podcasts'].forEach((element) async{
+      //   topPodcastList.add(PodcastModel.fromJson(element));
+      // });
 
       response.data['tags'].forEach((element) async{
         tagsList.add(TagModel.fromJson(element));

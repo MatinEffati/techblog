@@ -18,6 +18,8 @@ class Strings {
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی """;
 
+  static const String articleEmpty = """هنوز هیچ مقاله ای به جامعه گیگ های فارسی اضافه نکردی!!!""";
+
   static const String shareText = """
 من از تک بلاگ استفاده میکنم ، خیلی باحاله ، تو هم داشته باش\n
 www.MatinEffati.ir

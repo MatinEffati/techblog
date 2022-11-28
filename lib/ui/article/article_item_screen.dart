@@ -4,15 +4,14 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/components/components.dart';
-import 'package:tech_blog/controllers/article_item_controller.dart';
-import 'package:tech_blog/controllers/article_list_controller.dart';
+import 'package:tech_blog/controllers/article/article_item_controller.dart';
+import 'package:tech_blog/controllers/article/article_list_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/ui/article_list_screen.dart';
+import 'package:tech_blog/ui/article/article_list_screen.dart';
 
 class ArticleItemScreen extends StatelessWidget {
   ArticleItemController articleItemController =
-      Get.put(ArticleItemController());
-
+      Get.find<ArticleItemController>();
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;

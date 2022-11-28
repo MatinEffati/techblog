@@ -2,17 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/components.dart';
-import 'package:tech_blog/controllers/article_item_controller.dart';
-import 'package:tech_blog/controllers/article_list_controller.dart';
+import 'package:tech_blog/controllers/article/article_item_controller.dart';
+import 'package:tech_blog/controllers/article/article_list_controller.dart';
 
 class ArticleListScreen extends StatelessWidget {
   ArticleListScreen({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
-  ArticleListController articleController = Get.put(ArticleListController());
-  ArticleItemController articleItemController =
-      Get.put(ArticleItemController());
+  var articleController = Get.find<ArticleListController>();
+  var articleItemController = Get.find<ArticleItemController>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +29,9 @@ class ArticleListScreen extends StatelessWidget {
                   itemCount: articleController.articleList.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {
-                        articleItemController.getArticleItem(
-                            articleController.articleList[index].id);
+                      onTap: () async{
+                        await articleItemController.getArticleItem(articleController.articleList[index].id);
+
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

@@ -5,10 +5,10 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/components/colors.dart';
 import 'package:tech_blog/components/components.dart';
 import 'package:tech_blog/components/strings.dart';
+import 'package:tech_blog/controllers/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/ui/main_screens/home_screen.dart';
 import 'package:tech_blog/ui/main_screens/profile_screen.dart';
-import 'package:tech_blog/ui/register/register_intro_screen.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -153,6 +153,8 @@ class BottomNavigation extends StatelessWidget {
   final double bodyMargin;
   final Function(int) changeScreen;
 
+
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -172,7 +174,7 @@ class BottomNavigation extends StatelessWidget {
         ),
         child: Container(
           height: size.height / 8,
-          margin: EdgeInsets.only(bottom: 12),
+          margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
               gradient: const LinearGradient(colors: GradiantColors.bottomNav)),
@@ -185,8 +187,7 @@ class BottomNavigation extends StatelessWidget {
                       color: Colors.white)),
               IconButton(
                 onPressed: () {
-                  //Todo check login status
-                  Get.to(RegisterIntroScreen());
+                  Get.find<RegisterController>().toggleLogin();
                 },
                 icon: ImageIcon(Image.asset(Assets.icons.write.path).image),
                 color: Colors.white,

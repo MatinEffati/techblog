@@ -11,7 +11,7 @@ import 'package:validators/validators.dart';
 class RegisterIntroScreen extends StatelessWidget {
   RegisterIntroScreen({Key? key}) : super(key: key);
 
-  RegisterController registerController = Get.put(RegisterController());
+  var registerController = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class RegisterIntroScreen extends StatelessWidget {
                     child: TextField(
                       controller: registerController.emailTextEditingController,
                       onChanged: (value) {
-                        print(isEmail(value));
+                        debugPrint(isEmail(value).toString());
                       },
                       style: textTheme.headline5,
                       textAlign: TextAlign.center,
